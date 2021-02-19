@@ -17,3 +17,17 @@
   per far comparire in response: {{model.url}}
 </form>
 <!-- form-->
+
+<div [hidden]="beforesubmit">
+  <h2>You submitted the following:</h2>
+  <div class="row">
+    <div class="col-xs-3">Name</div>
+    <div class="col-xs-9">{{ model.url }}</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-3">Power</div>
+    <div class="col-xs-9">{{ model.method }}</div>
+  </div>
+  <br>
+  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+</div>
