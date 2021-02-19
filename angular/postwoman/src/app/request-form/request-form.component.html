@@ -1,0 +1,19 @@
+<!-- {{diagnostic}} -->
+<div [hidden]="submitted">
+  Insert url
+</div>
+<div [hidden]="beforesubmit">
+  REQUEST RESPONSE 200
+</div>
+<form (ngSubmit)="onSubmit()" #requestForm="ngForm">
+  <select class="form-control" id="method" [(ngModel)]="model.method" name="method" required>
+    <option *ngFor="let meth of methods" [value]="meth">{{meth}}</option>
+  </select>
+  <input type="text" class="form-control" id="url"[(ngModel)]="model.url" name="url"  required >
+  <!-- <div [hidden]="url.valid || url.pristine" class="alert alert-danger">
+    url is required
+  </div> -->
+  <button type="submit" class="btn btn-primary" [disabled]="!requestForm.form.valid">SEND</button>
+  per far comparire in response: {{model.url}}
+</form>
+<!-- form-->
