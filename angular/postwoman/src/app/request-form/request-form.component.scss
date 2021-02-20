@@ -8,6 +8,16 @@
   overflow: hidden;
 }
 
+.green {
+  color: #3ad11b;
+}
+.orange {
+  color: #f95100;
+}
+.red {
+  color: #ea0d12;
+}
+
 [hidden] {
   transition: $transition;
 }
@@ -23,6 +33,10 @@
   margin: 20px 3px;
   padding: 15px 0px;
   box-shadow: 0px 0px 0px 1px #0000000f;
+
+  .sbmt-btn-contner {
+    margin-top: 25px;
+  }
 
   button[type="submit"] {
     width: 100%;
@@ -88,7 +102,7 @@ button {
       background: white;
     }
 
-    input[type="text"] {
+    /* input[type="text"] {
       background: transparent;
       border: 0px;
       margin: 0px 20px;
@@ -99,11 +113,13 @@ button {
         background: #ffffff9c;
         border-radius: 3px;
       }
-    } //input
+    } */ //input
+
+    .url {
+      margin: 0px 10px;
+    }
 
     #url-send {
-      width: 100%;
-
       svg {
         display: none;
       }
@@ -129,6 +145,7 @@ button {
       margin-right: 5px;
       border: 0px;
       box-shadow: 0px 0px 0px 1px #0000000f;
+      min-width: 180px;
 
       .title {
         padding: 5px;
@@ -138,6 +155,10 @@ button {
         width: 100%;
         padding: 5px;
         margin-bottom: 3px;
+
+        .val {
+          overflow-wrap: break-word;
+        }
       }
     } //.card
 
@@ -173,10 +194,18 @@ button {
 
 @media screen and (max-width: 575px) {
   .header {
-    flex-direction: column-reverse;
+    //display: flex;
+    //flex-direction: column-reverse;
   }
 
   .section-url {
+    min-width: 270px;
+    margin: 20px 0px;
+    padding: 0px 10px;
+
+    .url {
+      overflow-wrap: anywhere;
+    }
     #url-send {
       height: 45px;
       p {
@@ -189,10 +218,15 @@ button {
   }
 
   .section-results {
-    overflow: hidden;
+    overflow-x: auto;
+    scrollbar-width: none;
+
+    &::-webkit-scrollbar {
+      opacity: 0;
+    }
 
     .nobg-container {
-      overflow-x: auto;
+      width: fit-content;
       justify-content: flex-start;
       padding: 0 20px;
 

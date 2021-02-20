@@ -21,7 +21,8 @@
         <label for="path">PATH</label>
         <input type="text" class="form-control" id="path"[(ngModel)]="model.path" name="path"  required >
       </div>
-      <div class="col-xs-12">
+      
+      <div class="col-sm-6 sbmt-btn-contner">
         <button type="submit" class="btn btn-primary" [disabled]="!requestForm.form.valid">SEND</button>
       </div>
     </form>
@@ -32,7 +33,7 @@
   <div [hidden]="!submitted" class="header" >
     <div class="flexcontainer status-container">
       <h1 class="code">{{randomResponse.code}}</h1>
-      <h5 class="subtitle">{{randomResponse.description}}</h5>
+      <h5 class="subtitle {{randomResponse.color}}">{{randomResponse.description}}</h5>
     </div>  <!-- / status-container -->
 
     <div class="section section-url">
@@ -40,7 +41,7 @@
 
         <button id="url-send" type="button" class="btn button button-get" (click)="submitted=false" >{{ model.method }}</button>
 
-        <input type="text" name="" placeholder="{{ model.domain }}{{ model.path }}" value="" disabled>
+        <p class="url"> {{ model.domain }}{{ model.path }}</p>
 
         <button id="url-send" type="button" class="btn btn-primary button" (click)="submitted=false" >
           <p>MODIFY</p>

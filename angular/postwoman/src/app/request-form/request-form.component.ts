@@ -18,30 +18,35 @@ export class RequestFormComponent  {
   responses = [
     {
       code: 200,
+      color: 'green',
       date: this.testdate,
       server: 'Apache/2.2.14 (Win32)',
       description: 'Everything is fine!'
     },
     {
       code: 202,
+      color: 'green',
       date: this.testdate,
       server: 'Apache/2.2.14 (Win32)',
       description: 'Accepted!'
     },
     {
       code: 404,
+      color: 'red',
       date: this.testdate,
       server: 'Apache/2.2.14 (Win32)',
       description: "Ops, there's no trace of that!"
     },
     {
       code: 400,
+      color: 'red',
       date: this.testdate,
       server: 'Apache/2.2.14 (Win32)',
       description: "Sorry, that was a bad one!"
     },
     {
       code: 302,
+      color: 'orange',
       location: 'location: /newpage.php',
       server: 'Apache/2.2.14 (Win32)',
       code2: 200,
