@@ -117,4 +117,42 @@
       </div><!-- / share-container -->
     </div> <!-- / section-share -->
   </div> <!-- / result--> 
+
+<div class="section section-stats">
+
+  <div class="top-container">
+    <div class="grey-bar"></div>
+  </div>
+
+  <div class="stats-container">
+    
+    <div class="flexcontainer stat">
+      <ngx-gauge [type]="gaugeType" 
+                [value]="gaugeValue" 
+                [thick] = "gaugeThick"
+                [append]="gaugeAppendText"
+                [cap] = "gaugeCap"
+                [label]="gaugeLabel"
+                [thresholds]="gaugethresholdConfig"
+      >
+      </ngx-gauge>
+    </div>
+
+    <div class="flexcontainer stat">
+      <ngx-gauge [value]="65" [thresholds]="gaugethresholdConfig" [type]="gaugeType" [thick] = "gaugeThick" [cap] = "gaugeCap">
+        <ngx-gauge-value>
+          65
+        </ngx-gauge-value>
+        <ngx-gauge-append>
+          Good!
+        </ngx-gauge-append>
+        <ngx-gauge-label>
+            First Interaction 0,9s
+        </ngx-gauge-label>  
+      </ngx-gauge>
+    </div>
+
+  </div> <!-- / stats-container -->
+</div> <!-- / section-stats -->
+
 </div> <!-- / main -->

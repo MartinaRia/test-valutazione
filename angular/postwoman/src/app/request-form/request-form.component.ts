@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Request } from '../request';
 import {formatDate} from '@angular/common';
@@ -69,12 +69,22 @@ export class RequestFormComponent  {
     return this.randomResponse;
   }
 
-
-  // newRequest() {
-  // this.model = new Request(2, '', '');
-  // }
+  gaugeType = "arch";
+  gaugeValue = 80;
+  gaugeLabel = "Page Load 0.4s";
+  gaugeAppendText = " Great!";
+  gaugeCap = "round";
+  gaugeThick = 10;
+  gaugethresholdConfig = {
+    '0': {color: 'red'},
+    '40': {color: 'orange'},
+    '75.5': {color: 'green'}
+  };
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }
 
 }
+
+
+

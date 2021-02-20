@@ -4,20 +4,27 @@ import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { RequestFormComponent } from './request-form/request-form.component';
+import { AppRoutingModule } from './app-routing.module';
+import { ResponseSummaryComponent } from './response-summary/response-summary.component';
+import { NgxGaugeModule } from 'ngx-gauge';
 
 // angular material
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    NoopAnimationsModule
+    NoopAnimationsModule,
+    AppRoutingModule,
+    NgxGaugeModule
   ],
   declarations: [
     AppComponent,
-    RequestFormComponent
+    RequestFormComponent,
+    ResponseSummaryComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
