@@ -2,12 +2,26 @@ import { Component } from '@angular/core';
 
 import { Request } from '../request';
 import {formatDate} from '@angular/common';
+import { trigger, transition, animate, style } from '@angular/animations'
+
 
 @Component({
   selector: 'app-request-form',
   templateUrl: './request-form.component.html',
-  styleUrls: ['./request-form.component.scss']
+  styleUrls: ['./request-form.component.scss'],
+  animations: [
+    trigger('slideInOut', [
+      transition(':enter', [
+        style({transform: 'translateY(-100%)'}),
+        animate('200ms ease-in', style({transform: 'translateY(0%)'}))
+      ]),
+      transition(':leave', [
+        animate('200ms ease-in', style({transform: 'translateY(-100%)'}))
+      ])
+    ])
+  ]
 })
+
 export class RequestFormComponent  {
 
   methods = ['GET', 'POST', 'PUT', 'DELETE', 'INFO'];
@@ -80,6 +94,15 @@ export class RequestFormComponent  {
     '40': {color: 'orange'},
     '75.5': {color: 'green'}
   };
+
+
+  visible = true;
+
+  show(){
+    this.visible = false;
+  }
+
+  public isCollapsed = true;
 
   // TODO: Remove this when we're done
   get diagnostic() { return JSON.stringify(this.model); }

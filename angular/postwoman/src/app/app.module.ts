@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { RequestFormComponent } from './request-form/request-form.component';
@@ -10,6 +11,7 @@ import { NgxGaugeModule } from 'ngx-gauge';
 
 // angular material
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 
@@ -19,7 +21,9 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     NoopAnimationsModule,
     AppRoutingModule,
-    NgxGaugeModule
+    NgxGaugeModule,
+    BrowserAnimationsModule,
+    NgbModule
   ],
   declarations: [
     AppComponent,

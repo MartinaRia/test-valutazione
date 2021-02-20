@@ -9,7 +9,7 @@ body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
-@import url("https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css");
+// @import url("https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css");
 
 p {
   margin: 0px;
@@ -32,3 +32,6 @@ $transition: all 1s;
 .light-grey {
   background: $light-grey;
 }
+
+/* Importing Bootstrap SCSS file. */
+@import "~bootstrap/scss/bootstrap";

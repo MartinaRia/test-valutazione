@@ -2,28 +2,32 @@
 
 <div class="flexcontainer main">
   <!-- form-->
-  <div [hidden]="submitted" class="container-fluid section section-form">
+  <div [hidden]="submitted" class="section section-form">
     <form (ngSubmit)="onSubmit()" #requestForm="ngForm">
   
-      <div class="form-group col-sm-6">
-        <label for="method">METHOD</label>
-        <select class="form-control" id="method" [(ngModel)]="model.method" name="method" required>
-          <option *ngFor="let meth of methods" [value]="meth">{{meth}}</option>
-        </select>
-      </div> 
-  
-      <div class="form-group col-sm-6">
-        <label for="domain">DOMAIN</label>
-        <input type="text" class="form-control" id="domain"[(ngModel)]="model.domain" name="domain"  required >
+      <div class="row">
+        <div class="form-group col-12 col-sm-6">
+          <label for="method">METHOD</label>
+          <select class="form-control" id="method" [(ngModel)]="model.method" name="method" required>
+            <option *ngFor="let meth of methods" [value]="meth">{{meth}}</option>
+          </select>
+        </div> 
+    
+        <div class="form-group col-12 col-sm-6">
+          <label for="domain">DOMAIN</label>
+          <input type="text" class="form-control" id="domain"[(ngModel)]="model.domain" name="domain"  required >
+        </div>
       </div>
   
-      <div class="form-group col-sm-6">
-        <label for="path">PATH</label>
-        <input type="text" class="form-control" id="path"[(ngModel)]="model.path" name="path"  required >
-      </div>
-      
-      <div class="col-sm-6 sbmt-btn-contner">
-        <button type="submit" class="btn btn-primary" [disabled]="!requestForm.form.valid">SEND</button>
+      <div class="row">
+        <div class="form-group col-12 col-sm-6">
+          <label for="path">PATH</label>
+          <input type="text" class="form-control" id="path"[(ngModel)]="model.path" name="path"  required >
+        </div>
+        
+        <div class="col-12 col-sm-6 sbmt-btn-contner">
+          <button type="submit" class="btn button-postwoman" [disabled]="!requestForm.form.valid">SEND</button>
+        </div>
       </div>
     </form>
   </div>
@@ -43,7 +47,7 @@
 
         <p class="url"> {{ model.domain }}{{ model.path }}</p>
 
-        <button id="url-send" type="button" class="btn btn-primary button" (click)="submitted=false" >
+        <button id="url-send" type="button" class="btn button-postwoman button" (click)="submitted=false" >
           <p>MODIFY</p>
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
             <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
@@ -113,46 +117,55 @@
     <div class="section section-share">
       <div class="flexcontainer share-container">
         <h6>SHARE</h6>
-        <a class="light-grey" href="#">httpsharethis</a>
+        <a class="light-grey" routerLink="/share">{{ model.domain }}{{ model.path }}</a>
       </div><!-- / share-container -->
     </div> <!-- / section-share -->
   </div> <!-- / result--> 
 
-<div class="section section-stats">
+  <!-- <div >This element will slide u</div>
+  <button class="btn button" (click)="visible=false">slide</button> -->
 
-  <div class="top-container">
-    <div class="grey-bar"></div>
-  </div>
+  <div class="section section-stats" [hidden]="!submitted">
 
-  <div class="stats-container">
-    
-    <div class="flexcontainer stat">
-      <ngx-gauge [type]="gaugeType" 
-                [value]="gaugeValue" 
-                [thick] = "gaugeThick"
-                [append]="gaugeAppendText"
-                [cap] = "gaugeCap"
-                [label]="gaugeLabel"
-                [thresholds]="gaugethresholdConfig"
-      >
-      </ngx-gauge>
-    </div>
+    <button type="button" class="btn" (click)="collapse.toggle()" [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
+      <div class="top-container">
+        <div class="grey-bar"></div>
+      </div>
+    </button>
 
-    <div class="flexcontainer stat">
-      <ngx-gauge [value]="65" [thresholds]="gaugethresholdConfig" [type]="gaugeType" [thick] = "gaugeThick" [cap] = "gaugeCap">
-        <ngx-gauge-value>
-          65
-        </ngx-gauge-value>
-        <ngx-gauge-append>
-          Good!
-        </ngx-gauge-append>
-        <ngx-gauge-label>
-            First Interaction 0,9s
-        </ngx-gauge-label>  
-      </ngx-gauge>
-    </div>
+    <div  class="stats-container" #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+      
+      <div class="flexcontainer stat">
+        <ngx-gauge [type]="gaugeType" 
+                  [value]="gaugeValue" 
+                  [thick] = "gaugeThick"
+                  [append]="gaugeAppendText"
+                  [cap] = "gaugeCap"
+                  [label]="gaugeLabel"
+                  [thresholds]="gaugethresholdConfig"
+        >
+        </ngx-gauge>
+      </div>
 
-  </div> <!-- / stats-container -->
-</div> <!-- / section-stats -->
+      <div class="flexcontainer stat">
+        <ngx-gauge [value]="65" [thresholds]="gaugethresholdConfig" [type]="gaugeType" [thick] = "gaugeThick" [cap] = "gaugeCap">
+          <ngx-gauge-value>
+            65
+          </ngx-gauge-value>
+          <ngx-gauge-append>
+            Good!
+          </ngx-gauge-append>
+          <ngx-gauge-label>
+              First Interaction 0,9s
+          </ngx-gauge-label>  
+        </ngx-gauge>
+      </div>
+
+    </div> <!-- / stats-container -->
+  </div> <!-- / section-stats -->
+
+ 
+
 
 </div> <!-- / main -->
+
