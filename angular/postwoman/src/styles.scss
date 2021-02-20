@@ -1,6 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
-@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+@import url("https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css");
+
+p {
+  margin: 0px;
+}
+
+$light-grey: #f1f1f1;
+$dark-grey: #e9e9e9;
+$pink: #e85889;
+$dark-pink: #bb496f;
+$transition: all 1s;
+
+.flexcontainer {
+  display: flex;
+}
+
+.dark-grey {
+  background: $dark-grey;
+}
+
+.light-grey {
+  background: $light-grey;
+}

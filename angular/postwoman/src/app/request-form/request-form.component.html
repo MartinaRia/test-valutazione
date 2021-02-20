@@ -1,33 +1,119 @@
 <!-- {{diagnostic}} -->
-<div [hidden]="submitted">
-  Insert url
-</div>
-<div [hidden]="beforesubmit">
-  REQUEST RESPONSE 200
-</div>
-<form (ngSubmit)="onSubmit()" #requestForm="ngForm">
-  <select class="form-control" id="method" [(ngModel)]="model.method" name="method" required>
-    <option *ngFor="let meth of methods" [value]="meth">{{meth}}</option>
-  </select>
-  <input type="text" class="form-control" id="url"[(ngModel)]="model.url" name="url"  required >
-  <!-- <div [hidden]="url.valid || url.pristine" class="alert alert-danger">
-    url is required
-  </div> -->
-  <button type="submit" class="btn btn-primary" [disabled]="!requestForm.form.valid">SEND</button>
-  per far comparire in response: {{model.url}}
-</form>
-<!-- form-->
 
-<div [hidden]="beforesubmit">
-  <h2>You submitted the following:</h2>
-  <div class="row">
-    <div class="col-xs-3">Name</div>
-    <div class="col-xs-9">{{ model.url }}</div>
+<div class="flexcontainer main">
+  <!-- form-->
+  <div [hidden]="submitted" class="container-fluid section section-form">
+    <form (ngSubmit)="onSubmit()" #requestForm="ngForm">
+  
+      <div class="form-group col-sm-6">
+        <label for="method">METHOD</label>
+        <select class="form-control" id="method" [(ngModel)]="model.method" name="method" required>
+          <option *ngFor="let meth of methods" [value]="meth">{{meth}}</option>
+        </select>
+      </div> 
+  
+      <div class="form-group col-sm-6">
+        <label for="domain">DOMAIN</label>
+        <input type="text" class="form-control" id="domain"[(ngModel)]="model.domain" name="domain"  required >
+      </div>
+  
+      <div class="form-group col-sm-6">
+        <label for="path">PATH</label>
+        <input type="text" class="form-control" id="path"[(ngModel)]="model.path" name="path"  required >
+      </div>
+      <div class="col-xs-12">
+        <button type="submit" class="btn btn-primary" [disabled]="!requestForm.form.valid">SEND</button>
+      </div>
+    </form>
   </div>
-  <div class="row">
-    <div class="col-xs-3">Power</div>
-    <div class="col-xs-9">{{ model.method }}</div>
+  <!-- form-->
+  
+
+  <div [hidden]="!submitted" class="header" >
+    <div class="flexcontainer status-container">
+      <h1 class="code">{{randomResponse.code}}</h1>
+      <h5 class="subtitle">{{randomResponse.description}}</h5>
+    </div>  <!-- / status-container -->
+
+    <div class="section section-url">
+      <div class="flexcontainer grey-container">
+
+        <button id="url-send" type="button" class="btn button button-get" (click)="submitted=false" >{{ model.method }}</button>
+
+        <input type="text" name="" placeholder="{{ model.domain }}{{ model.path }}" value="" disabled>
+
+        <button id="url-send" type="button" class="btn btn-primary button" (click)="submitted=false" >
+          <p>MODIFY</p>
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+            <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+          </svg>
+
+        </button>
+      </div> <!-- / grey-ontainer -->
+    </div> <!-- / section-url -->
   </div>
-  <br>
-  <button class="btn btn-primary" (click)="submitted=false">Edit</button>
-</div>
+
+  <div class="result" [hidden]="result">
+    <div class="section section-results">
+      <div class="flexcontainer nobg-container">
+
+        <div class="card info light-grey">
+          <p class="title"> URL INFO </p>
+          <div class="sec dark-grey">
+            <p class="name">DOMAIN</p>
+            <p class="val">{{ model.domain }}</p>
+          </div>
+
+          <div class="sec dark-grey">
+            <p class="name">SCHEME</p>
+            <p class="val">HTTP</p>
+          </div>
+
+          <div class="sec dark-grey">
+            <p class="name">PATH</p>
+            <p class="val">{{ model.path }}</p>
+          </div>
+        </div> <!-- / info -->
+
+        <div class="card response first">
+          <p class="title">RESPONSE </p>
+          <div class="sec light-grey">
+            <p class="val">HTTP/1.1 - {{randomResponse.code}}</p>
+          </div>
+
+          <div class="sec light-grey">
+            <p class="val">{{randomResponse.location ? randomResponse.location : randomResponse.date }}</p>
+          </div>
+
+          <div class="sec light-grey">
+            <p class="val">{{randomResponse.server}}</p>
+          </div>
+        </div> <!-- / response first -->
+
+        <div class="card response second" [hidden]='!randomResponse.location'>
+          <p class="title">RESPONSE </p>
+          <div class="sec light-grey">
+            <p class="val">{{randomResponse.code2}}</p>
+          </div>
+
+          <div class="sec light-grey">
+            <p class="val">{{randomResponse.date2}}</p>
+          </div>
+
+          <div class="sec light-grey">
+            <p class="val">{{randomResponse.server2}}</p>
+          </div>
+        </div> <!-- / response second -->
+
+      </div> <!-- / nobg-container -->
+    </div> <!-- / section-results -->
+
+
+    <div class="section section-share">
+      <div class="flexcontainer share-container">
+        <h6>SHARE</h6>
+        <a class="light-grey" href="#">httpsharethis</a>
+      </div><!-- / share-container -->
+    </div> <!-- / section-share -->
+  </div> <!-- / result--> 
+</div> <!-- / main -->

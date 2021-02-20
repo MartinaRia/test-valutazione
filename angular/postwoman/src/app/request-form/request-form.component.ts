@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Request } from '../request';
+import {formatDate} from '@angular/common';
 
 @Component({
   selector: 'app-request-form',
@@ -10,18 +11,61 @@ import { Request } from '../request';
 export class RequestFormComponent  {
 
   methods = ['GET', 'POST', 'PUT', 'DELETE', 'INFO'];
+  model = new Request(this.methods[0], 'www.yoursite.com', '/home/index.php');
 
-  model = new Request(1, this.methods[0], 'www.yoursite.com/home/index.php');
+  testdate = formatDate(new Date(), 'dd MMMM yyyy', 'en');
 
-  beforesubmit = true;
+  responses = [
+    {
+      code: 200,
+      date: this.testdate,
+      server: 'Apache/2.2.14 (Win32)',
+      description: 'Everything is fine!'
+    },
+    {
+      code: 202,
+      date: this.testdate,
+      server: 'Apache/2.2.14 (Win32)',
+      description: 'Accepted!'
+    },
+    {
+      code: 404,
+      date: this.testdate,
+      server: 'Apache/2.2.14 (Win32)',
+      description: "Ops, there's no trace of that!"
+    },
+    {
+      code: 400,
+      date: this.testdate,
+      server: 'Apache/2.2.14 (Win32)',
+      description: "Sorry, that was a bad one!"
+    },
+    {
+      code: 302,
+      location: 'location: /newpage.php',
+      server: 'Apache/2.2.14 (Win32)',
+      code2: 200,
+      date2: this.testdate,
+      server2: 'Apache/2.2.14 (Win32)',
+      description: "Someone's moved!"
+    }
+  ];
+
+  randomResponse = this.responses[Math.floor(Math.random() * this.responses.length)];
+
   submitted = false; //var d'appoggio
+  result = true;
   onSubmit() {
     this.submitted = true;
-    this.beforesubmit = false;
+    this.result = false;
+    
+    const newrresp = this.responses[Math.floor(Math.random() * this.responses.length)];
+    this.randomResponse = newrresp;
+    return this.randomResponse;
   }
 
-  // to clear the form call this funct on (click)
-  // newHero() {
+
+  // newRequest() {
   // this.model = new Request(2, '', '');
   // }
 
