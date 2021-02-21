@@ -59,17 +59,18 @@ export class RequestFormComponent  {
 
   randomResponse = this.responses[Math.floor(Math.random() * this.responses.length)];
 
-  submitted = false; //var d'appoggio
+  submitted = false;
   result = true;
   onSubmit() {
     this.submitted = true;
     this.result = false;
-    
-    const newrresp = this.responses[Math.floor(Math.random() * this.responses.length)];
-    this.randomResponse = newrresp;
+
+    const newresp = this.responses[Math.floor(Math.random() * this.responses.length)];
+    this.randomResponse = newresp;
     return this.randomResponse;
   }
 
+  // ngx-gauge lib for gauge chart
   gaugeType = "arch";
   gaugeValue = 80;
   gaugeLabel = "Page Load 0.4s";
@@ -82,12 +83,9 @@ export class RequestFormComponent  {
     '75.5': {color: 'green'}
   };
 
-  
+  // for stats collapse (bootstrap)
   public isCollapsed = true;
 
-  
+
 
 }
-
-
-

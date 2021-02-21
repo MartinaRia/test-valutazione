@@ -9,10 +9,9 @@ import { AppRoutingModule } from './app-routing.module';
 import { ResponseSummaryComponent } from './response-summary/response-summary.component';
 import { NgxGaugeModule } from 'ngx-gauge';
 
-// angular material
+// angular material - not used
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-
 
 
 @NgModule({

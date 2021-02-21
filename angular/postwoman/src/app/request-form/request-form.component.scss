@@ -2,7 +2,6 @@
 
 // general
 .main {
-  // width: 100%;
   justify-content: center;
   flex-wrap: wrap;
   overflow: hidden;
@@ -18,15 +17,13 @@
   color: #ea0d12;
 }
 
-[hidden] {
-  transition: $transition;
-}
-
 .section {
   width: 100%;
   margin-bottom: 20px;
 }
 
+
+ /* FORM --- */
 .section-form {
   width: 76%;
   background: $light-grey;
@@ -49,7 +46,7 @@
   button[type="submit"] {
     width: 100%;
   }
-}
+} // form ------
 
 .form-control {
   border: 0px;
@@ -59,6 +56,9 @@
   }
 }
 
+
+
+ /* STATUS CONTAINER --- */
 .header {
   margin-top: 20px;
   flex-direction: column;
@@ -99,7 +99,7 @@
   width: 100%;
 }
 
-/* SECTION URL --*/
+/* section url --- */
 .section-url {
   .grey-container {
     width: fit-content;
@@ -129,7 +129,10 @@
   } //.grey-container
 } //.url-section
 
-/* SECTION RESULTS --*/
+
+
+
+/* RESULTS CONTAINER --- */
 .section-results {
   .nobg-container {
     width: 100%;
@@ -172,6 +175,10 @@
   } //.nobg-container
 } // .section-results
 
+
+
+
+/* SHARE CONTAINER --- */
 .share-container {
   flex-direction: column;
   align-items: center;
@@ -217,12 +224,21 @@
       border-radius: 50px;
     }
   }
+
+  .title{
+    padding: 20px 0px 5px 20px;
+  }
+
   .stat {
     padding: 30px 0px;
     flex-wrap: wrap;
     justify-content: center;
   }
 } //section-stats
+
+
+
+
 
 /* Responsive Styles */
 @media screen and (max-width: 575px) {
